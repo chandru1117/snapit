@@ -88,41 +88,39 @@ class _ShoppingPageState extends State<ShoppingPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        title: Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(width: 1.0, color: Colors.grey)),
-                height: 40,
-                width: 270,
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                margin: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-                child: InkWell(
-                  onTap: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Icon(Icons.search,
-                          size: 30, color: const Color.fromARGB(255, 10, 3, 3)),
-                      Text(
-                        '   Search here....',
-                        style: Theme.of(context)
-                            .textTheme
-                            .subtitle1
-                            ?.copyWith(color: Colors.grey, fontSize: 15),
-                      ),
-                    ],
-                  ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(width: 1.0, color: Colors.grey)),
+              height: 40,
+              width: 270,
+              padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+              margin: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+              child: InkWell(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Icon(Icons.search,
+                        size: 30, color: const Color.fromARGB(255, 10, 3, 3)),
+                    Text(
+                      '   Search here....',
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle1
+                          ?.copyWith(color: Colors.grey, fontSize: 15),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         actions: [
           InkWell(
