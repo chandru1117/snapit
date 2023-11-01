@@ -33,7 +33,7 @@ class _PurchasePageState extends State<PurchasePage> {
                 child: Icon(
                   Icons.notifications_none_outlined,
                   color: Color(0xff606060),
-                  size: 40,
+                  size: 30,
                 ),
               ),
             ),
@@ -43,7 +43,7 @@ class _PurchasePageState extends State<PurchasePage> {
           )
         ],
         leading: Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(10.0),
           child: InkWell(
             onTap: () => {},
             child: Ink(
@@ -53,7 +53,7 @@ class _PurchasePageState extends State<PurchasePage> {
               ], borderRadius: BorderRadius.circular(10), color: Colors.white),
               child: Icon(
                 Icons.dashboard_sharp,
-                size: 40,
+                size: 30,
                 color: Color(0xff606060),
               ),
             ),
@@ -79,13 +79,14 @@ class _PurchasePageState extends State<PurchasePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              decoration:
-                                  BoxDecoration(border: Border.all(width: 2)),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(width: 0.2)),
+                              padding: EdgeInsets.all(15),
                               height: 90,
-                              width: 120,
+                              width: 100,
                               child: Image.asset(
                                 'assets/fruit/orange.2.jpg',
-                                alignment: Alignment.topCenter,
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -97,7 +98,7 @@ class _PurchasePageState extends State<PurchasePage> {
                                   'orange - 1kg',
                                   style: TextStyle(
                                       fontSize: 18,
-                                      fontWeight: FontWeight.bold),
+                                      fontWeight: FontWeight.w400),
                                 ),
                                 SizedBox(
                                   height: 20,
@@ -127,33 +128,37 @@ class _PurchasePageState extends State<PurchasePage> {
                                 ),
                                 Container(
                                   height: 40,
-                                  width: 120,
+                                  width: 130,
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.grey),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      IconButton(
-                                        onPressed: () => setState(() =>
-                                            count > min ? count-- : count),
-                                        icon: Icon(Icons.remove),
-                                        iconSize: 30,
-                                      ),
-                                      Text(
-                                        '$count',
-                                        style: TextStyle(fontSize: 30),
-                                      ),
-                                      IconButton(
-                                        onPressed: () => setState(() =>
-                                            (count < max) ? count++ : count),
-                                        icon: Icon(Icons.add),
-                                        iconSize: 30,
-                                      )
-                                    ],
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.amber),
+                                  child: Center(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        InkWell(
+                                          onTap: () => setState(() =>
+                                              count > min ? count-- : count),
+                                          child: Container(
+                                            child: Icon(Icons.remove),
+                                          ),
+                                        ),
+                                        Text(
+                                          '$count',
+                                          style: TextStyle(fontSize: 30),
+                                        ),
+                                        InkWell(
+                                          onTap: () => setState(() =>
+                                              count < max ? count++ : count),
+                                          child: Container(
+                                            child: Icon(Icons.add),
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 )
                               ],
