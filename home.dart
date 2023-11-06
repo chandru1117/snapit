@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'drawermenu.dart';
 
 class CardItem {
   final String assetimage;
@@ -9,9 +8,6 @@ class CardItem {
   const CardItem(
       {required this.assetimage, required this.title, required this.subtitle});
 }
-
-double translatex = 0.0, translatey = 0.0, scale = 1.0;
-bool toggle = false;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -93,11 +89,6 @@ class _HomePageState extends State<HomePage> {
 
     return Stack(
       children: [
-        drawermenu(),
-        AnimatedContainer(
-          duration: Duration(seconds: 2),
-          transform: Matrix4.translationValues(translatex, translatey, scale),
-        ),
         Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.transparent,

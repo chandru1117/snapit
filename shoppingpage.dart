@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_app/productpage.dart';
 
 class CardItem {
   final String assetimage;
@@ -25,17 +26,17 @@ class _ShoppingPageState extends State<ShoppingPage> {
     ),
     CardItem(
       assetimage: 'assets/fruit/orange.2.jpg',
-      title: 'orange - 1kg',
+      title: 'oranges - 1kg',
       subtitle: '\₹299.99',
     ),
     CardItem(
       assetimage: 'assets/fruit/mango.3.jpg',
-      title: 'mango - 1kg',
+      title: 'mangos - 1kg',
       subtitle: '\₹149.99',
     ),
     CardItem(
       assetimage: 'assets/fruit/pomegranate.4.jpg',
-      title: 'pomegranate - 1kg',
+      title: 'pomegranates - 1kg',
       subtitle: '\₹349.99',
     )
   ];
@@ -52,10 +53,16 @@ class _ShoppingPageState extends State<ShoppingPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: Image.asset(
-                  item.assetimage,
-                  alignment: Alignment.topCenter,
-                  fit: BoxFit.cover,
+                child: InkWell(
+                  onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => productpage())),
+                  child: Container(
+                    child: Image.asset(
+                      item.assetimage,
+                      alignment: Alignment.topCenter,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
               ),
               Text(
@@ -68,19 +75,20 @@ class _ShoppingPageState extends State<ShoppingPage> {
               ),
               SizedBox(width: 30),
               OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Add to cart',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+                onPressed: () {},
+                child: Text(
+                  'Add to cart',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.white,
                   ),
-                  style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    padding: EdgeInsets.symmetric(horizontal: 50),
-                    primary: Colors.grey,
-                  ))
+                ),
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  padding: EdgeInsets.symmetric(horizontal: 50),
+                  primary: Colors.black,
+                ),
+              )
             ],
           ),
         );

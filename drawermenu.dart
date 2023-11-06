@@ -57,10 +57,9 @@ class _drawermenuState extends State<drawermenu> {
 }
 
 class listtilemenu extends StatelessWidget {
+  const listtilemenu({required this.title, required this.iconname, super.key});
   final String title;
   final IconData iconname;
-
-  const listtilemenu({required this.title, required this.iconname, super.key});
 
   @override
   Widget build(BuildContext context) {
