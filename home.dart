@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_app/productpage.dart';
 
 class CardItem {
   final String assetimage;
@@ -10,8 +11,11 @@ class CardItem {
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final Function callbackfunction;
+  bool Toggle;
 
+  HomePage({Key? key, required this.callbackfunction, required this.Toggle})
+      : super(key: key);
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -48,42 +52,48 @@ class _HomePageState extends State<HomePage> {
           height: 200,
           width: 180,
           color: Colors.white,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Image.asset(
-                  item.assetimage,
-                  alignment: Alignment.topCenter,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Text(
-                item.title,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                item.subtitle,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(width: 30),
-              OutlinedButton(
-                onPressed: () {},
-                child: Text(
-                  'Add to cart',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    color: Colors.white,
+          child: InkWell(
+            onTap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => productpage())),
+            child: Ink(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Image.asset(
+                      item.assetimage,
+                      alignment: Alignment.topCenter,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-                style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  padding: EdgeInsets.symmetric(horizontal: 50),
-                  primary: Colors.grey,
-                ),
-                onLongPress: () => {},
-              )
-            ],
+                  Text(
+                    item.title,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    item.subtitle,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(width: 30),
+                  OutlinedButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Add to cart',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      padding: EdgeInsets.symmetric(horizontal: 50),
+                      primary: Colors.grey,
+                    ),
+                    onLongPress: () => {},
+                  )
+                ],
+              ),
+            ),
           ),
         );
 
@@ -94,7 +104,13 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: Colors.transparent,
             elevation: 0.0,
             leading: IconButton(
-                onPressed: () {}, icon: Icon(Icons.menu), color: Colors.black),
+                onPressed: () {
+                  widget.Toggle = !widget.Toggle;
+                  widget.callbackfunction(widget.Toggle);
+                  print(widget.Toggle);
+                },
+                icon: Icon(Icons.menu),
+                color: Colors.black),
             leadingWidth: 30,
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

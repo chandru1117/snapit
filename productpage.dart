@@ -9,6 +9,8 @@ class productpage extends StatefulWidget {
 }
 
 class _productpageState extends State<productpage> {
+  int count = 0, min = 0, max = 10;
+  bool countchange = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -111,27 +113,7 @@ class _productpageState extends State<productpage> {
                     SizedBox(
                       height: 20,
                     ),
-                    OutlinedButton(
-                      onPressed: () {},
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Add to cart',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(color: Colors.black, fontSize: 15),
-                          ),
-                          SizedBox(width: 10),
-                          Icon(Icons.shopping_bag)
-                        ],
-                      ),
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor: Colors.yellow,
-                        padding: EdgeInsets.symmetric(horizontal: 50),
-                        primary: Colors.black,
-                        fixedSize: Size(size.width, 50),
-                      ),
-                    ),
+                    countchange ? addbutton() : cartbutton(),
                     SizedBox(
                       height: 20,
                     ),
@@ -304,6 +286,98 @@ class _productpageState extends State<productpage> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget cartbutton() {
+    return OutlinedButton(
+      onPressed: () {
+        setState(() {
+          countchange = true;
+        });
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Add to cart',
+            textAlign: TextAlign.left,
+            style: TextStyle(color: Colors.black, fontSize: 15),
+          ),
+          SizedBox(width: 10),
+          Icon(Icons.shopping_bag)
+        ],
+      ),
+      style: OutlinedButton.styleFrom(
+        backgroundColor: Colors.yellow,
+        padding: EdgeInsets.symmetric(horizontal: 50),
+        primary: Colors.black,
+        fixedSize: Size(350, 50),
+      ),
+    );
+  }
+
+  Widget addbutton() {
+    return Row(
+      children: [
+        InkWell(
+          onTap: () {
+            setState(() {
+              count > min ? count-- : count;
+              count == 0 ? countchange = false : countchange = true;
+            });
+          },
+          child: Container(
+            height: 50,
+            width: 100,
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 187, 179, 99),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  topLeft: Radius.circular(15)),
+            ),
+            child: Icon(
+              Icons.remove,
+              color: Colors.black,
+              size: 40,
+            ),
+          ),
+        ),
+        Expanded(
+          child: Container(
+            height: 50,
+            width: 100,
+            color: Colors.yellow,
+            child: Center(
+                child: Text(
+              '$count',
+              style: TextStyle(fontSize: 30),
+            )),
+          ),
+        ),
+        InkWell(
+          onTap: () {
+            setState(() {
+              count < max ? count++ : count;
+            });
+          },
+          child: Container(
+            height: 50,
+            width: 100,
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 187, 179, 99),
+              borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(15),
+                  topRight: Radius.circular(15)),
+            ),
+            child: Icon(
+              Icons.add,
+              color: Colors.black,
+              size: 40,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
