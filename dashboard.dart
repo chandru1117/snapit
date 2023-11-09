@@ -17,14 +17,13 @@ class _dashboardState extends State<dashboard> {
   double translatex = 0, translatey = 0, scale = 1;
   bool toggle = false;
   callback(value) {
-    value = toggle;
-    if (toggle == false) {
-      double translatex = 200, translatey = 130, scale = 0.7;
-    } else {
-      double translatex = 0.0, translatey = 0.0, scale = 1.0;
-    }
-    setState(() {});
-    print('chandru');
+    setState(() {
+      toggle = value;
+      toggle == true
+          ? (translatex = 200, translatey = 130, scale = 0.7)
+          : (translatex = 0.0, translatey = 0.0, scale = 1.0);
+      print(value);
+    });
   }
 
   int BotNavPageindex = 0;
@@ -52,11 +51,12 @@ class _dashboardState extends State<dashboard> {
       children: [
         drawermenu(),
         AnimatedContainer(
-          duration: Duration(seconds: 5),
+          duration: Duration(seconds: 3),
           transform: Matrix4.translationValues(translatex, translatey, 0)
             ..scale(scale),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius:
+                (toggle) ? BorderRadius.circular(20) : BorderRadius.circular(0),
             child: Scaffold(
               body: Pages[BotNavPageindex],
               bottomNavigationBar: BottomNavigationBar(

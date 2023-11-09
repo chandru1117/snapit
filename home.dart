@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_app/addresspage.dart';
+import 'package:my_first_app/deliverypage.dart';
 import 'package:my_first_app/productpage.dart';
 
 class CardItem {
@@ -106,8 +108,8 @@ class _HomePageState extends State<HomePage> {
             leading: IconButton(
                 onPressed: () {
                   widget.Toggle = !widget.Toggle;
+
                   widget.callbackfunction(widget.Toggle);
-                  print(widget.Toggle);
                 },
                 icon: Icon(Icons.menu),
                 color: Colors.black),
@@ -123,9 +125,8 @@ class _HomePageState extends State<HomePage> {
                       ?.copyWith(color: Colors.grey, fontSize: 12),
                 ),
                 InkWell(
-                  onTap: () {
-                    print('hi');
-                  },
+                  onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => addresspage())),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
