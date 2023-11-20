@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_app/address2.dart';
 import 'package:my_first_app/addresspage.dart';
 import 'package:my_first_app/deliverypage.dart';
 import 'package:my_first_app/productpage.dart';
@@ -126,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 InkWell(
                   onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => addresspage())),
+                      MaterialPageRoute(builder: (context) => addresspage2())),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [

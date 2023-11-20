@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const Color primarycolor = Colors.black;
+const Color appcolor = Color(0xff4c148b);
 /* Container( height: 200,width: double.infinity,decoration: BoxDecoration(color: Colors.black),
         child: ListView.builder( itemCount: 4,shrinkWrap: true,
         scrollDirection:Axis.horizontal ,
@@ -14,6 +15,7 @@ const Color primarycolor = Colors.black;
             color: Colors.green),
             //color: Colors.black,
           margin: EdgeInsets.only(bottom: 10,right: 10,top: 2),
+          const Color AppColor: Color(0xff4c148b),
             
           );
         }
